@@ -4,10 +4,11 @@ import random
 
 class EnemyPad:
     def __init__(self):
-        self.pos = (760, 200)
+        self.pos = [760, 250]
+        self.hitbox = pygame.Rect(self.pos[0], self.pos[1], 20, 100)
 
     def update(self, dt):
         pass
 
     def draw(self, surf):
-        pass
+        pygame.draw.rect(surf, (255, 255, 255), (self.pos[0], self.pos[1], 20, 100))

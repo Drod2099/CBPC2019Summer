@@ -1,6 +1,9 @@
 import pygame
 import random
 import math
+from player_paddle import *
+from enemy_paddle import *
+from puck import *
 
 
 # Pygame startup
@@ -13,10 +16,17 @@ font = pygame.font.SysFont("Times New Roman", 22)
 clock = pygame.time.Clock()
 done = False
 
+player = PlayerPad()
+enemy = EnemyPad()
+puck = Puck()
+
 # GAME LOOP
 while not done:
     # UPDATES
     deltaTime = clock.tick() / 1000.0
+    player.update(deltaTime)
+    enemy.update(deltaTime)
+    puck.update(deltaTime)
 
     # INPUT
     evt = pygame.event.poll()
@@ -29,9 +39,13 @@ while not done:
     if keys[pygame.K_ESCAPE]:
         done = True
 
+    player.input(keys)
+
     # DRAWING
     win.fill((0, 0, 0))
-
+    player.draw(win)
+    enemy.draw(win)
+    puck.draw(win)
     pygame.display.flip()
 
 # Pygame shutdown
