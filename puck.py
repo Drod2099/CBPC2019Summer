@@ -1,5 +1,4 @@
 import pygame
-import random
 from Vector import *
 
 
@@ -21,6 +20,8 @@ class Puck:
         if self.hitbox.colliderect(other.hitbox):
             self.dir[0] = self.dir[0] * -1
             return True
+        else:
+            return False
 
     def draw(self, surf):
         pygame.draw.rect(surf, (255, 255, 255), (self.pos[0], self.pos[1], 10, 10))

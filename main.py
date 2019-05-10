@@ -1,5 +1,4 @@
 import pygame
-import random
 import math
 from player_paddle import *
 from enemy_paddle import *
@@ -18,6 +17,8 @@ done = False
 round_start = False
 start_direction = "right"
 round_count = 0
+enemy_points = 0
+player_points = 0
 
 player = PlayerPad()
 enemy = EnemyPad()
@@ -41,10 +42,20 @@ while not done:
         puck.update(deltaTime)
 
     # Collision Detection
-    if puck.collision(player):
-        hit_player = True
-    elif puck.collision(enemy):
-        hit_enemy = True
+    hit_player = puck.collision(player)
+    hit_enemy = puck.collision(enemy)
+    if puck.pos[0] < -5:
+        enemy_points += 1
+        round_start = False
+        start_direction = "left"
+        puck = None
+        puck = Puck(start_direction)
+    if puck.pos[0] > 805:
+        player_points += 1
+        round_start = False
+        start_direction = "right"
+        puck = None
+        puck = Puck(start_direction)
 
     # INPUT
     evt = pygame.event.poll()
