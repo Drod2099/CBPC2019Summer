@@ -8,7 +8,7 @@ class EnemyPad:
         self.hitbox = pygame.Rect(self.pos[0], self.pos[1], 20, 100)
 
     def update(self, dt):
-        pass
+        self.hitbox = pygame.Rect(self.pos[0], self.pos[1], 20, 100)
 
     def draw(self, surf):
         pygame.draw.rect(surf, (255, 255, 255), (self.pos[0], self.pos[1], 20, 100))

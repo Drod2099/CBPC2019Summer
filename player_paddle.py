@@ -17,6 +17,7 @@ class PlayerPad:
         elif self.move_up is True:
             self.pos[1] += -(self.speed * dt)
             self.move_up = False
+        self.hitbox = pygame.Rect(self.pos[0], self.pos[1], 20, 100)
 
     def input(self, keys):
         if keys[pygame.K_s] or keys[pygame.K_DOWN]:
