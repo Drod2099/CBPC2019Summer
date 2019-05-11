@@ -1,12 +1,12 @@
 import pygame
-import random
 
 
 class PlayerPad:
     def __init__(self):
         self.pos = [20, 250]
         self.speed = 100
-        self.hitbox = pygame.Rect(self.pos[0], self.pos[1], 20, 100)
+        self.hitbox1 = pygame.Rect(self.pos[0], self.pos[1], 20, 50)
+        self.hitbox2 = pygame.Rect(self.pos[0], (self.pos[1] + 50), 20, 50)
         self.move_down = False
         self.move_up = False
 
@@ -17,7 +17,8 @@ class PlayerPad:
         elif self.move_up is True:
             self.pos[1] += -(self.speed * dt)
             self.move_up = False
-        self.hitbox = pygame.Rect(self.pos[0], self.pos[1], 20, 100)
+        self.hitbox1 = pygame.Rect(self.pos[0], self.pos[1], 20, 50)
+        self.hitbox2 = pygame.Rect(self.pos[0], (self.pos[1] + 50), 20, 50)
 
     def input(self, keys):
         if keys[pygame.K_s] or keys[pygame.K_DOWN]:

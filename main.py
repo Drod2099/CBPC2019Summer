@@ -1,8 +1,7 @@
-import pygame
-import math
 from player_paddle import *
 from enemy_paddle import *
 from puck import *
+import random
 
 
 # Pygame startup
@@ -11,7 +10,7 @@ pygame.font.init()
 win_width = 800
 win_height = 600
 win = pygame.display.set_mode((win_width, win_height))
-font = pygame.font.SysFont("Times New Roman", 22)
+font = pygame.font.SysFont("Times New Roman", 48)
 clock = pygame.time.Clock()
 done = False
 round_start = False
@@ -75,6 +74,8 @@ while not done:
 
     # DRAWING
     win.fill((0, 0, 0))
+    if round_start is False:
+        win.blit(font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
     player.draw(win)
     enemy.draw(win)
     puck.draw(win)

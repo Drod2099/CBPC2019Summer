@@ -17,8 +17,13 @@ class Puck:
         self.hitbox = pygame.Rect(self.pos[0], self.pos[1], 10, 10)
 
     def collision(self, other):
-        if self.hitbox.colliderect(other.hitbox):
+        if self.hitbox.colliderect(other.hitbox1):
             self.dir[0] = self.dir[0] * -1
+
+            return True
+        elif self.hitbox.colliderect(other.hitbox2):
+            self.dir[0] = self.dir[0] * -1
+
             return True
         else:
             return False
