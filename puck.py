@@ -15,19 +15,27 @@ class Puck:
     def update(self, dt):
         self.pos[0] += self.dir[0] * dt
         self.pos[1] += self.dir[1] * dt
+        if self.pos[1] >= 590:
+            self.pos[1] = 590
+            self.dir[1] = self.dir[1] * -1
+            pygame.mixer.Sound("paddle-collision.wav").play()
+        elif self.pos[1] <= 70:
+            self.pos[1] = 70
+            self.dir[1] = self.dir[1] * -1
+            pygame.mixer.Sound("paddle-collision.wav").play()
         self.hitbox = pygame.Rect(self.pos[0], self.pos[1], 10, 10)
 
     def collision(self, other):
         if self.hitbox.colliderect(other.hitbox1):
             self.dir[0] = self.dir[0] * -1
             self.dir[1] = 0
-            y = random.randint(5, 10)
+            y = random.randint(10, 20)
             self.dir[1] -= y
             return True
         elif self.hitbox.colliderect(other.hitbox2):
             self.dir[0] = self.dir[0] * -1
             self.dir[1] = 0
-            y = random.randint(5, 10)
+            y = random.randint(10, 20)
             self.dir[1] += y
             return True
         else:

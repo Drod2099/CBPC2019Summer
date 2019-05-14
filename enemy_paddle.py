@@ -4,7 +4,7 @@ import pygame
 class EnemyPad:
     def __init__(self):
         self.pos = [760, 250]
-        self.speed = 50
+        self.speed = 15
         self.hitbox1 = pygame.Rect(self.pos[0], self.pos[1], 20, 50)
         self.hitbox2 = pygame.Rect(self.pos[0], (self.pos[1] + 50), 20, 50)
 
@@ -15,6 +15,10 @@ class EnemyPad:
             self.pos[1] -= (puck_pos[1] * (1 / self.speed) * dt)
         else:
             self.pos[1] = self.pos[1]
+        if self.pos[1] >= 500:
+            self.pos[1] = 500
+        elif self.pos[1] <= 70:
+            self.pos[1] = 70
         self.hitbox1 = pygame.Rect(self.pos[0], self.pos[1], 20, 50)
         self.hitbox2 = pygame.Rect(self.pos[0], (self.pos[1] + 50), 20, 50)
 

@@ -17,6 +17,10 @@ class PlayerPad:
         elif self.move_up is True:
             self.pos[1] += -(self.speed * dt)
             self.move_up = False
+        if self.pos[1] >= 500:
+            self.pos[1] = 500
+        elif self.pos[1] <= 70:
+            self.pos[1] = 70
         self.hitbox1 = pygame.Rect(self.pos[0], self.pos[1], 20, 50)
         self.hitbox2 = pygame.Rect(self.pos[0], (self.pos[1] + 50), 20, 50)
 
