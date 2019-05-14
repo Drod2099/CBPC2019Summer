@@ -1,4 +1,5 @@
 import pygame
+import random
 from Vector import *
 
 
@@ -7,9 +8,9 @@ class Puck:
         self.pos = [395, 295]
         self.hitbox = pygame.Rect(self.pos[0], self.pos[1], 10, 10)
         if direction == "left":
-            self.dir = Vector(-100, 0)
+            self.dir = Vector(-200, 0)
         elif direction == "right":
-            self.dir = Vector(100, 0)
+            self.dir = Vector(200, 0)
 
     def update(self, dt):
         self.pos[0] += self.dir[0] * dt
@@ -19,11 +20,15 @@ class Puck:
     def collision(self, other):
         if self.hitbox.colliderect(other.hitbox1):
             self.dir[0] = self.dir[0] * -1
-
+            self.dir[1] = 0
+            y = random.randint(2, 5)
+            self.dir[1] -= y
             return True
         elif self.hitbox.colliderect(other.hitbox2):
             self.dir[0] = self.dir[0] * -1
-
+            self.dir[1] = 0
+            y = random.randint(2, 5)
+            self.dir[1] += y
             return True
         else:
             return False

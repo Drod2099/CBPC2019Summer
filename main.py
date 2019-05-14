@@ -29,8 +29,9 @@ while not done:
     deltaTime = clock.tick() / 1000.0
     hit_player = False
     hit_enemy = False
-    player.update(deltaTime)
-    enemy.update(deltaTime)
+    if round_start is True:
+        player.update(deltaTime)
+        enemy.update(deltaTime, puck.pos)
     if round_start is True and round_count == 1:
         rand_dir = random.randint(1, 2)
         if rand_dir == 1:
@@ -55,6 +56,12 @@ while not done:
         start_direction = "right"
         puck = None
         puck = Puck(start_direction)
+
+    if round_start is False:
+        player = None
+        player = PlayerPad()
+        enemy = None
+        enemy = EnemyPad()
 
     # INPUT
     evt = pygame.event.poll()
