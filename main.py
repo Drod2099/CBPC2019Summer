@@ -89,6 +89,10 @@ while not done:
     win.fill((0, 0, 0))
     if round_start is False:
         win.blit(font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
+    pygame.draw.rect(win, (255, 255, 255), (0, 60, win_width, 10))
+    pygame.draw.rect(win, (255, 255, 255), (395, 0, 10, 60))
+    win.blit(font.render(str(player_points), True, (255, 255, 255)), (350, 7))
+    win.blit(font.render(str(enemy_points), True, (255, 255, 255)), (425, 7))
     player.draw(win)
     enemy.draw(win)
     puck.draw(win)
