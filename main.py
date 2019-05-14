@@ -7,6 +7,7 @@ import random
 # Pygame startup
 pygame.display.init()
 pygame.font.init()
+pygame.mixer.init()
 win_width = 800
 win_height = 600
 win = pygame.display.set_mode((win_width, win_height))
@@ -48,6 +49,7 @@ while not done:
         hit_player = puck.collision(player)
         hit_enemy = puck.collision(enemy)
     if hit_player or hit_enemy:
+        pygame.mixer.Sound("paddle-collision.wav").play()
         hit_timer = 0
 
     if puck.pos[0] < -5:
