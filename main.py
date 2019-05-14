@@ -18,6 +18,7 @@ start_direction = "right"
 round_count = 0
 enemy_points = 0
 player_points = 0
+hit_timer = 0
 
 player = PlayerPad()
 enemy = EnemyPad()
@@ -27,6 +28,7 @@ puck = Puck(start_direction)
 while not done:
     # UPDATES
     deltaTime = clock.tick() / 1000.0
+    hit_timer += deltaTime
     hit_player = False
     hit_enemy = False
     if round_start is True:
@@ -42,8 +44,12 @@ while not done:
         puck.update(deltaTime)
 
     # Collision Detection
-    hit_player = puck.collision(player)
-    hit_enemy = puck.collision(enemy)
+    if hit_timer >= 1:
+        hit_player = puck.collision(player)
+        hit_enemy = puck.collision(enemy)
+    if hit_player or hit_enemy:
+        hit_timer = 0
+
     if puck.pos[0] < -5:
         enemy_points += 1
         round_start = False

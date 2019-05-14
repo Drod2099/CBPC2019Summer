@@ -21,13 +21,13 @@ class Puck:
         if self.hitbox.colliderect(other.hitbox1):
             self.dir[0] = self.dir[0] * -1
             self.dir[1] = 0
-            y = random.randint(2, 5)
+            y = random.randint(5, 10)
             self.dir[1] -= y
             return True
         elif self.hitbox.colliderect(other.hitbox2):
             self.dir[0] = self.dir[0] * -1
             self.dir[1] = 0
-            y = random.randint(2, 5)
+            y = random.randint(5, 10)
             self.dir[1] += y
             return True
         else:
