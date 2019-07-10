@@ -8,27 +8,36 @@ import random
 pygame.display.init()
 pygame.font.init()
 pygame.mixer.init()
+
 win_width = 800
 win_height = 600
 win = pygame.display.set_mode((win_width, win_height))
 font = pygame.font.SysFont("Times New Roman", 48)
 clock = pygame.time.Clock()
+
 done = False
 start_screen = True
 round_start = False
 win_screen = False
 lose_screen = False
+
 start_direction = "right"
+
 round_count = 0
 enemy_points = 0
 player_points = 0
 hit_timer = 0
+
 start_img = pygame.image.load("PongStartScreen.png")
 lose_img = pygame.image.load("PongLoseScreen.png")
 win_img = pygame.image.load("PongWinScreen.png")
+
 start_box = pygame.Rect(312, 348, 183, 74)
 options_box = pygame.Rect(310, 438, 236, 66)
 exit_box = pygame.Rect(311, 521, 141, 69)
+
+restart_box = pygame.Rect(305, 380, 180, 65)
+main_menu_box = pygame.Rect(260, 465, 280, 65)
 
 player = PlayerPad()
 enemy = EnemyPad()
@@ -39,7 +48,7 @@ while not done:
     # UPDATES
     deltaTime = clock.tick() / 1000.0
     hit_timer += deltaTime
-    if not start_screen:
+    if not start_screen or not win_screen or not lose_screen:
         hit_player = False
         hit_enemy = False
         if round_start is True:
@@ -57,8 +66,12 @@ while not done:
         # Win-Lose Check
         if enemy_points == 11:
             lose_screen = True
+            enemy_points = 0
+            player_points = 0
         elif player_points == 11:
             win_screen = True
+            enemy_points = 0
+            player_points = 0
 
         # Collision Detection
         if hit_timer >= 1:
@@ -101,6 +114,13 @@ while not done:
             options_screen = True
         elif exit_box.collidepoint(mpos):
             done = True
+    elif evt.type == pygame.MOUSEBUTTONDOWN and evt.button == 1 and (win_screen or lose_screen):
+        mpos = pygame.mouse.get_pos()
+        if restart_box.collidepoint(mpos):
+            win_screen = False
+            lose_screen = False
+        if main_menu_box.collidepoint(mpos):
+            start_screen = True
 
     # ... device-polling
     keys = pygame.key.get_pressed()
