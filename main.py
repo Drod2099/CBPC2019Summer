@@ -16,12 +16,16 @@ clock = pygame.time.Clock()
 done = False
 start_screen = True
 round_start = False
+win_screen = False
+lose_screen = False
 start_direction = "right"
 round_count = 0
 enemy_points = 0
 player_points = 0
 hit_timer = 0
 start_img = pygame.image.load("PongStartScreen.png")
+lose_img = pygame.image.load("PongLoseScreen.png")
+win_img = pygame.image.load("PongWinScreen.png")
 start_box = pygame.Rect(312, 348, 183, 74)
 options_box = pygame.Rect(310, 438, 236, 66)
 exit_box = pygame.Rect(311, 521, 141, 69)
@@ -49,6 +53,12 @@ while not done:
                 start_direction = "right"
         if round_start is True:
             puck.update(deltaTime)
+
+        # Win-Lose Check
+        if enemy_points == 11:
+            lose_screen = True
+        elif player_points == 11:
+            win_screen = True
 
         # Collision Detection
         if hit_timer >= 1:
@@ -107,12 +117,16 @@ while not done:
     win.fill((0, 0, 0))
     if start_screen:
         win.blit(start_img, (0, 0))
-    if not start_screen:
+    elif lose_screen:
+        win.blit(lose_img, (0, 0))
+    elif win_screen:
+        win.blit(win_img, (0, 0))
+    elif not start_screen:
         if round_start is False:
             win.blit(font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
         pygame.draw.rect(win, (255, 255, 255), (0, 60, win_width, 10))
         pygame.draw.rect(win, (255, 255, 255), (395, 0, 10, 60))
-        win.blit(font.render(str(player_points), True, (255, 255, 255)), (350, 7))
+        win.blit(font.render(str(player_points), True, (255, 255, 255)), (345, 7))
         win.blit(font.render(str(enemy_points), True, (255, 255, 255)), (425, 7))
         player.draw(win)
         enemy.draw(win)
