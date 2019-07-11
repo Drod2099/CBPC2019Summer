@@ -12,7 +12,7 @@ pygame.mixer.init()
 win_width = 800
 win_height = 600
 win = pygame.display.set_mode((win_width, win_height))
-font = pygame.font.SysFont("Times New Roman", 48)
+game_font = pygame.font.SysFont("Bauhaus 93", 48)
 clock = pygame.time.Clock()
 
 done = False
@@ -20,6 +20,7 @@ start_screen = True
 round_start = False
 win_screen = False
 lose_screen = False
+options_screen = False
 
 start_direction = "right"
 
@@ -48,7 +49,7 @@ while not done:
     # UPDATES
     deltaTime = clock.tick() / 1000.0
     hit_timer += deltaTime
-    if not start_screen or not win_screen or not lose_screen:
+    if not start_screen or not win_screen or not lose_screen or not options_screen:
         hit_player = False
         hit_enemy = False
         if round_start is True:
@@ -121,6 +122,26 @@ while not done:
             lose_screen = False
         if main_menu_box.collidepoint(mpos):
             start_screen = True
+    elif evt.type == pygame.MOUSEBUTTONDOWN and evt.button == 1 and options_screen:
+        mpos = pygame.mouse.get_pos()
+        if dif_easy_box.collidepoint(mpos):
+            pass
+        if dif_medium_box.collidepoint(mpos):
+            pass
+        if dif_hard_box.collidepoint(mpos):
+            pass
+
+        if color_inv_on_box.collidepoint(mpos):
+            pass
+        if color_inv_off_box.collidepoint(mpos):
+            pass
+
+        if eleven_score_box.collidepoint(mpos):
+            pass
+        if seven_score_box.collidepoint(mpos):
+            pass
+        if fifteen_score_box.collidepoint(mpos):
+            pass
 
     # ... device-polling
     keys = pygame.key.get_pressed()
@@ -143,11 +164,11 @@ while not done:
         win.blit(win_img, (0, 0))
     elif not start_screen:
         if round_start is False:
-            win.blit(font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
+            win.blit(game_font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
         pygame.draw.rect(win, (255, 255, 255), (0, 60, win_width, 10))
         pygame.draw.rect(win, (255, 255, 255), (395, 0, 10, 60))
-        win.blit(font.render(str(player_points), True, (255, 255, 255)), (345, 7))
-        win.blit(font.render(str(enemy_points), True, (255, 255, 255)), (425, 7))
+        win.blit(game_font.render(str(player_points), True, (255, 255, 255)), (345, 7))
+        win.blit(game_font.render(str(enemy_points), True, (255, 255, 255)), (425, 7))
         player.draw(win)
         enemy.draw(win)
         puck.draw(win)
