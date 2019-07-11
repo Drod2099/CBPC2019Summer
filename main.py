@@ -13,6 +13,7 @@ win_width = 800
 win_height = 600
 win = pygame.display.set_mode((win_width, win_height))
 game_font = pygame.font.SysFont("Bauhaus 93", 48)
+options_font = pygame.font.SysFont("Bauhaus 93", 72)
 clock = pygame.time.Clock()
 
 done = False
@@ -143,6 +144,9 @@ while not done:
         if fifteen_score_box.collidepoint(mpos):
             pass
 
+        if back_box.collidepoint(mpos):
+            pass
+
     # ... device-polling
     keys = pygame.key.get_pressed()
     if keys[pygame.K_ESCAPE]:
@@ -162,6 +166,12 @@ while not done:
         win.blit(lose_img, (0, 0))
     elif win_screen:
         win.blit(win_img, (0, 0))
+    elif options_screen:
+        win.blit(options_font.render("Options", True, (255, 255, 255)), (275, 15))
+        win.blit(game_font.render("Difficulty:    Easy    Medium    Hard", True, (255, 255, 255)), (10, 150))
+        win.blit(game_font.render("Winning Score:     7      11      15", True, (255, 255, 255)), (10, 280))
+        win.blit(game_font.render("Color Inversion:     Yes      No", True, (255, 255, 255)), (10, 410))
+        win.blit(game_font.render("Back", True, (255, 255, 255)), (350, 520))
     elif not start_screen:
         if round_start is False:
             win.blit(game_font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
