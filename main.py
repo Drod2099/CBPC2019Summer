@@ -17,11 +17,11 @@ options_font = pygame.font.SysFont("Bauhaus 93", 72)
 clock = pygame.time.Clock()
 
 done = False
-start_screen = False
+start_screen = True
 round_start = False
 win_screen = False
 lose_screen = False
-options_screen = True
+options_screen = False
 
 start_direction = "right"
 
@@ -106,19 +106,15 @@ while not done:
             enemy_points += 1
             round_start = False
             start_direction = "left"
-            puck = None
             puck = Puck(start_direction, color)
         if puck.pos[0] > 805:
             player_points += 1
             round_start = False
             start_direction = "right"
-            puck = None
             puck = Puck(start_direction, color)
 
         if round_start is False:
-            player = None
             player = PlayerPad(color)
-            enemy = None
             enemy = EnemyPad(dif, color)
 
     # INPUT
@@ -128,44 +124,44 @@ while not done:
         done = True
     elif evt.type == pygame.MOUSEBUTTONDOWN and evt.button == 1 and start_screen:
         mpos = pygame.mouse.get_pos()
-        if start_box.collidepoint(mpos):
+        if start_box.collidepoint(mpos[0], mpos[1]):
             start_screen = False
-        elif options_box.collidepoint(mpos):
+        elif options_box.collidepoint(mpos[0], mpos[1]):
             start_screen = False
             options_screen = True
-        elif exit_box.collidepoint(mpos):
+        elif exit_box.collidepoint(mpos[0], mpos[1]):
             done = True
     elif evt.type == pygame.MOUSEBUTTONDOWN and evt.button == 1 and (win_screen or lose_screen):
         mpos = pygame.mouse.get_pos()
-        if restart_box.collidepoint(mpos):
+        if restart_box.collidepoint(mpos[0], mpos[1]):
             win_screen = False
             lose_screen = False
-        if main_menu_box.collidepoint(mpos):
+        if main_menu_box.collidepoint(mpos[0], mpos[1]):
             start_screen = True
     elif evt.type == pygame.MOUSEBUTTONDOWN and evt.button == 1 and options_screen:
         mpos = pygame.mouse.get_pos()
-        if dif_easy_box.collidepoint(mpos):
+        if dif_easy_box.collidepoint(mpos[0], mpos[1]):
             dif = "Easy"
-        if dif_medium_box.collidepoint(mpos):
+        if dif_medium_box.collidepoint(mpos[0], mpos[1]):
             dif = "Medium"
-        if dif_hard_box.collidepoint(mpos):
+        if dif_hard_box.collidepoint(mpos[0], mpos[1]):
             dif = "Hard"
 
-        if color_inv_on_box.collidepoint(mpos):
+        if color_inv_on_box.collidepoint(mpos[0], mpos[1]):
             color_inversion = "On"
             color = BLK
-        if color_inv_off_box.collidepoint(mpos):
+        if color_inv_off_box.collidepoint(mpos[0], mpos[1]):
             color_inversion = "Off"
             color = WHT
 
-        if eleven_score_box.collidepoint(mpos):
+        if eleven_score_box.collidepoint(mpos[0], mpos[1]):
             max_score = 11
-        if seven_score_box.collidepoint(mpos):
+        if seven_score_box.collidepoint(mpos[0], mpos[1]):
             max_score = 7
-        if fifteen_score_box.collidepoint(mpos):
+        if fifteen_score_box.collidepoint(mpos[0], mpos[1]):
             max_score = 15
 
-        if back_box.collidepoint(mpos):
+        if back_box.collidepoint(mpos[0], mpos[1]):
             options_screen = False
             start_screen = True
 
@@ -232,17 +228,6 @@ while not done:
         elif color_inversion == "Off":
             win.blit(game_font.render("On", True, GREY), (400, 410))
             win.blit(game_font.render("Off", True, WHT), (550, 410))
-
-        # Test
-        pygame.draw.rect(win, WHT, dif_easy_box, 1)
-        pygame.draw.rect(win, WHT, dif_medium_box, 1)
-        pygame.draw.rect(win, WHT, dif_hard_box, 1)
-        pygame.draw.rect(win, WHT, color_inv_on_box, 1)
-        pygame.draw.rect(win, WHT, color_inv_off_box, 1)
-        pygame.draw.rect(win, WHT, eleven_score_box, 1)
-        pygame.draw.rect(win, WHT, seven_score_box, 1)
-        pygame.draw.rect(win, WHT, fifteen_score_box, 1)
-        pygame.draw.rect(win, WHT, back_box, 1)
 
     elif not start_screen and color_inversion == "Off":
         if round_start is False:
