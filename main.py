@@ -12,6 +12,7 @@ pygame.mixer.init()
 win_width = 800
 win_height = 600
 win = pygame.display.set_mode((win_width, win_height))
+controls_font = pygame.font.SysFont("Bauhaus 93", 24)
 game_font = pygame.font.SysFont("Bauhaus 93", 48)
 options_font = pygame.font.SysFont("Bauhaus 93", 72)
 title_font = pygame.font.SysFont("Bauhaus 93", 230)
@@ -264,6 +265,8 @@ while not done:
     elif not start_screen and color_inversion == "Off" and single:
         if round_start is False:
             win.blit(game_font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
+            win.blit(controls_font.render("Up = W or Up-Arrow", True, WHT), (300, 250))
+            win.blit(controls_font.render("Down = S or Down-Arrow", True, WHT), (275, 310))
         pygame.draw.rect(win, WHT, (0, 60, win_width, 10))
         pygame.draw.rect(win, WHT, (395, 0, 10, 60))
         win.blit(game_font.render(str(player_points), True, WHT), (345, 7))
@@ -275,6 +278,8 @@ while not done:
     elif not start_screen and color_inversion == "Off" and not single:
         if round_start is False:
             win.blit(game_font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
+            win.blit(controls_font.render("1st: Up = W, Down = S", True, WHT), (285, 250))
+            win.blit(controls_font.render("2nd: Up = Up-Arrow, Down = Down-Arrow", True, WHT), (190, 310))
         pygame.draw.rect(win, WHT, (0, 60, win_width, 10))
         pygame.draw.rect(win, WHT, (395, 0, 10, 60))
         win.blit(game_font.render(str(player_points), True, WHT), (345, 7))
@@ -287,6 +292,8 @@ while not done:
         win.fill(WHT)
         if round_start is False:
             win.blit(game_font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
+            win.blit(controls_font.render("Up = W or Up-Arrow", True, BLK), (300, 250))
+            win.blit(controls_font.render("Down = S or Down-Arrow", True, BLK), (275, 310))
         pygame.draw.rect(win, BLK, (0, 60, win_width, 10))
         pygame.draw.rect(win, BLK, (395, 0, 10, 60))
         win.blit(game_font.render(str(player_points), True, BLK), (345, 7))
@@ -299,6 +306,8 @@ while not done:
         win.fill(WHT)
         if round_start is False:
             win.blit(game_font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
+            win.blit(controls_font.render("1st: Up = W, Down = S", True, BLK), (285, 250))
+            win.blit(controls_font.render("2nd: Up = Up-Arrow, Down = Down-Arrow", True, BLK), (190, 310))
         pygame.draw.rect(win, BLK, (0, 60, win_width, 10))
         pygame.draw.rect(win, BLK, (395, 0, 10, 60))
         win.blit(game_font.render(str(player_points), True, BLK), (345, 7))
