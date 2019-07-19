@@ -27,6 +27,8 @@ start_direction = "right"
 
 WHT = (255, 255, 255)
 GREY = (100, 100, 100)
+BLK = (0, 0, 0)
+color = WHT
 
 dif = "Medium"
 max_score = 11
@@ -58,10 +60,6 @@ seven_score_box = pygame.Rect(395, 285, 40, 50)
 fifteen_score_box = pygame.Rect(620, 285, 65, 50)
 back_box = pygame.Rect(345, 525, 120, 50)
 
-player = PlayerPad()
-enemy = EnemyPad()
-puck = Puck(start_direction)
-
 # GAME LOOP
 while not done:
     # UPDATES
@@ -70,6 +68,10 @@ while not done:
     if not start_screen or not win_screen or not lose_screen or not options_screen:
         hit_player = False
         hit_enemy = False
+        if round_start is False:
+            player = PlayerPad(color)
+            enemy = EnemyPad(dif, color)
+            puck = Puck(start_direction, color)
         if round_start is True:
             player.update(deltaTime)
             enemy.update(deltaTime, puck.pos)
@@ -105,19 +107,19 @@ while not done:
             round_start = False
             start_direction = "left"
             puck = None
-            puck = Puck(start_direction)
+            puck = Puck(start_direction, color)
         if puck.pos[0] > 805:
             player_points += 1
             round_start = False
             start_direction = "right"
             puck = None
-            puck = Puck(start_direction)
+            puck = Puck(start_direction, color)
 
         if round_start is False:
             player = None
-            player = PlayerPad()
+            player = PlayerPad(color)
             enemy = None
-            enemy = EnemyPad()
+            enemy = EnemyPad(dif, color)
 
     # INPUT
     evt = pygame.event.poll()
@@ -151,8 +153,10 @@ while not done:
 
         if color_inv_on_box.collidepoint(mpos):
             color_inversion = "On"
+            color = BLK
         if color_inv_off_box.collidepoint(mpos):
             color_inversion = "Off"
+            color = WHT
 
         if eleven_score_box.collidepoint(mpos):
             max_score = 11
@@ -240,13 +244,25 @@ while not done:
         pygame.draw.rect(win, WHT, fifteen_score_box, 1)
         pygame.draw.rect(win, WHT, back_box, 1)
 
-    elif not start_screen:
+    elif not start_screen and color_inversion == "Off":
         if round_start is False:
             win.blit(game_font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
-        pygame.draw.rect(win, (255, 255, 255), (0, 60, win_width, 10))
-        pygame.draw.rect(win, (255, 255, 255), (395, 0, 10, 60))
-        win.blit(game_font.render(str(player_points), True, (255, 255, 255)), (345, 7))
-        win.blit(game_font.render(str(enemy_points), True, (255, 255, 255)), (425, 7))
+        pygame.draw.rect(win, WHT, (0, 60, win_width, 10))
+        pygame.draw.rect(win, WHT, (395, 0, 10, 60))
+        win.blit(game_font.render(str(player_points), True, WHT), (345, 7))
+        win.blit(game_font.render(str(enemy_points), True, WHT), (425, 7))
+        player.draw(win)
+        enemy.draw(win)
+        puck.draw(win)
+
+    elif not start_screen and color_inversion == "On":
+        win.fill(WHT)
+        if round_start is False:
+            win.blit(game_font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
+        pygame.draw.rect(win, BLK, (0, 60, win_width, 10))
+        pygame.draw.rect(win, BLK, (395, 0, 10, 60))
+        win.blit(game_font.render(str(player_points), True, BLK), (345, 7))
+        win.blit(game_font.render(str(enemy_points), True, BLK), (425, 7))
         player.draw(win)
         enemy.draw(win)
         puck.draw(win)

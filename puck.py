@@ -4,13 +4,14 @@ from Vector import *
 
 
 class Puck:
-    def __init__(self, direction):
+    def __init__(self, direction, color):
         self.pos = [395, 295]
         self.hitbox = pygame.Rect(self.pos[0], self.pos[1], 10, 10)
         if direction == "left":
             self.dir = Vector(-400, 0)
         elif direction == "right":
             self.dir = Vector(400, 0)
+        self.color = color
 
     def update(self, dt):
         self.pos[0] += self.dir[0] * dt
@@ -42,4 +43,4 @@ class Puck:
             return False
 
     def draw(self, surf):
-        pygame.draw.rect(surf, (255, 255, 255), (self.pos[0], self.pos[1], 10, 10))
+        pygame.draw.rect(surf, self.color, (self.pos[0], self.pos[1], 10, 10))

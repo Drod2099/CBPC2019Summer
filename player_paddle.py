@@ -2,13 +2,14 @@ import pygame
 
 
 class PlayerPad:
-    def __init__(self):
+    def __init__(self, color):
         self.pos = [20, 250]
         self.speed = 100
         self.hitbox1 = pygame.Rect(self.pos[0], self.pos[1], 20, 50)
         self.hitbox2 = pygame.Rect(self.pos[0], (self.pos[1] + 50), 20, 50)
         self.move_down = False
         self.move_up = False
+        self.color = color
 
     def update(self, dt):
         if self.move_down is True:
@@ -31,4 +32,4 @@ class PlayerPad:
             self.move_up = True
 
     def draw(self, surf):
-        pygame.draw.rect(surf, (255, 255, 255), (self.pos[0], self.pos[1], 20, 100))
+        pygame.draw.rect(surf, self.color, (self.pos[0], self.pos[1], 20, 100))
