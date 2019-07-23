@@ -2,7 +2,6 @@ from player_paddle import *
 from enemy_paddle import *
 from puck import *
 import random
-import time
 
 
 # Pygame startup
