@@ -19,20 +19,11 @@ clock = pygame.time.Clock()
 windows = platform.release()
 
 # Fonts
-# if windows == "7":
-controls_font = pygame.font.SysFont("C:\\Windows\\Fonts\\Bauhaus 93", 24)
+controls_font = pygame.font.SysFont("Bauhaus 93", 24)
 game_font = pygame.font.SysFont("Bauhaus 93", 48)
 options_font = pygame.font.SysFont("Bauhaus 93", 72)
 end_font = pygame.font.SysFont("Bauhaus 93", 190)
-title_font = pygame.font.SysFont("C:\Windows\Fonts\Bauhaus 93", 230)
-# elif windows == "10":
-#     controls_font = pygame.font.Font("BAUHS93.ttf", 24)
-#     game_font = pygame.font.Font("BAUHS93.ttf", 48)
-#     options_font = pygame.font.Font("BAUHS93.ttf", 72)
-#     end_font = pygame.font.Font("BAUHS93.ttf", 190)
-#     title_font = pygame.font.Font("BAUHS93.ttf", 230)
-clock = pygame.time.Clock()
->>>>>>> parent of 9df57b8... Added final comments to main
+title_font = pygame.font.SysFont("Bauhaus 93", 230)
 
 done = False
 start_screen = True
@@ -42,6 +33,7 @@ win_screen_1 = False
 win_screen_2 = False
 lose_screen = False
 options_screen = False
+
 single = True
 
 start_direction = "right"
