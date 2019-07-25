@@ -3,6 +3,7 @@ from enemy_paddle import *
 from puck import *
 import random
 import platform
+import os
 
 
 # Pygame startup
@@ -17,13 +18,29 @@ clock = pygame.time.Clock()
 
 # Platform
 windows = platform.release()
+username = os.getenv('username')
 
 # Fonts
-controls_font = pygame.font.SysFont("Bauhaus 93", 24)
-game_font = pygame.font.SysFont("Bauhaus 93", 48)
-options_font = pygame.font.SysFont("Bauhaus 93", 72)
-end_font = pygame.font.SysFont("Bauhaus 93", 190)
-title_font = pygame.font.SysFont("Bauhaus 93", 230)
+if windows == "10":
+    if os.path.isfile('C:\\Users\\' + username + '\\AppData\\Local\\Microsoft\\Windows\\Fonts\\BAUHS93_0.ttf'):
+        controls_font = pygame.font.Font("C:\\Users\\" + username + "\\AppData\\Local\\Microsoft\\Windows\\Fonts\\BAUHS93_0.ttf", 24)
+        game_font = pygame.font.Font("C:\\Users\\" + username + "\\AppData\\Local\\Microsoft\\Windows\\Fonts\\BAUHS93_0.ttf", 48)
+        options_font = pygame.font.Font("C:\\Users\\" + username + "\\AppData\\Local\\Microsoft\\Windows\\Fonts\\BAUHS93_0.ttf", 72)
+        end_font = pygame.font.Font("C:\\Users\\" + username + "\\AppData\\Local\\Microsoft\\Windows\\Fonts\\BAUHS93_0.ttf", 190)
+        title_font = pygame.font.Font("C:\\Users\\" + username + "\\AppData\\Local\\Microsoft\\Windows\\Fonts\\BAUHS93_0.ttf", 230)
+
+    elif os.path.isfile('C:\\Users\\' + username + '\\AppData\\Local\\Microsoft\\Windows\\Fonts\\BAUHS93.ttf'):
+        controls_font = pygame.font.Font("C:\\Users\\" + username + "\\AppData\\Local\\Microsoft\\Windows\\Fonts\\BAUHS93.ttf", 24)
+        game_font = pygame.font.Font("C:\\Users\\" + username + "\\AppData\\Local\\Microsoft\\Windows\\Fonts\\BAUHS93.ttf", 48)
+        options_font = pygame.font.Font("C:\\Users\\" + username + "\\AppData\\Local\\Microsoft\\Windows\\Fonts\\BAUHS93.ttf", 72)
+        end_font = pygame.font.Font("C:\\Users\\" + username + "\\AppData\\Local\\Microsoft\\Windows\\Fonts\\BAUHS93.ttf", 190)
+        title_font = pygame.font.Font("C:\\Users\\" + username + "\\AppData\\Local\\Microsoft\\Windows\\Fonts\\BAUHS93.ttf", 230)
+elif windows == "7":
+    controls_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 24)
+    game_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 48)
+    options_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 72)
+    end_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 190)
+    title_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 230)
 
 # Booleans
 done = False
