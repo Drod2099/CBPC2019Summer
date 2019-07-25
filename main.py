@@ -24,8 +24,8 @@ game_font = pygame.font.SysFont("Bauhaus 93", 48)
 options_font = pygame.font.SysFont("Bauhaus 93", 72)
 end_font = pygame.font.SysFont("Bauhaus 93", 190)
 title_font = pygame.font.SysFont("Bauhaus 93", 230)
-clock = pygame.time.Clock()
 
+# Booleans
 done = False
 start_screen = True
 round_start = False
@@ -34,33 +34,38 @@ win_screen_1 = False
 win_screen_2 = False
 lose_screen = False
 options_screen = False
-
 single = True
 
 start_direction = "right"
 
+# Colors
 WHT = (255, 255, 255)
 GREY = (150, 150, 150)
 BLK = (0, 0, 0)
 color = WHT
 
+# Options settings
 dif = "Medium"
 max_score = 11
 color_inversion = "Off"
 
+# Counters
 round_count = 0
 enemy_points = 0
 player_points = 0
 hit_timer = 0
 
+# Main Menu Hitboxes
 one_box = pygame.Rect(275, 240, 280, 90)
 two_box = pygame.Rect(270, 335, 280, 74)
 options_box = pygame.Rect(276, 420, 260, 72)
 exit_box = pygame.Rect(335, 503, 141, 69)
 
+# Win/Lose Hitboxes
 restart_box = pygame.Rect(295, 380, 235, 70)
 main_menu_box = pygame.Rect(225, 470, 365, 70)
 
+# Options Hitboxes
 dif_easy_box = pygame.Rect(295, 155, 105, 55)
 dif_medium_box = pygame.Rect(445, 155, 180, 55)
 dif_hard_box = pygame.Rect(670, 155, 110, 55)
@@ -71,6 +76,7 @@ seven_score_box = pygame.Rect(395, 285, 40, 50)
 fifteen_score_box = pygame.Rect(620, 285, 65, 50)
 back_box = pygame.Rect(345, 525, 120, 50)
 
+# Class initialization
 player = PlayerPad(color, single, 1)
 enemy = EnemyPad(dif, color)
 player_two = PlayerPad(color, single, 2)
@@ -80,6 +86,8 @@ while not done:
     # UPDATES
     deltaTime = clock.tick() / 1000.0
     hit_timer += deltaTime
+
+    # In-game creation and updates
     if not start_screen or not win_screen or not lose_screen or not options_screen:
         hit_player = False
         hit_enemy = False
@@ -135,6 +143,7 @@ while not done:
             pygame.mixer.Sound("paddle-collision.wav").play()
             hit_timer = 0
 
+        # Score detection
         if puck.pos[0] < -5:
             enemy_points += 1
             round_start = False
@@ -146,6 +155,7 @@ while not done:
             start_direction = "right"
             puck = Puck(start_direction, color)
 
+        # After-score Reset
         if round_start is False and single:
             player = PlayerPad(color, single, 1)
             enemy = EnemyPad(dif, color)
@@ -158,6 +168,8 @@ while not done:
     # ... event-handling
     if evt.type == pygame.QUIT:
         done = True
+
+    # Main Menu selections
     elif evt.type == pygame.MOUSEBUTTONDOWN and evt.button == 1 and start_screen:
         mpos = pygame.mouse.get_pos()
         if one_box.collidepoint(mpos[0], mpos[1]):
@@ -171,6 +183,8 @@ while not done:
             options_screen = True
         elif exit_box.collidepoint(mpos[0], mpos[1]):
             done = True
+
+    # Win/Lose selections
     elif evt.type == pygame.MOUSEBUTTONDOWN and evt.button == 1 and (win_screen or win_screen_1 or win_screen_2 or lose_screen):
         mpos = pygame.mouse.get_pos()
         if restart_box.collidepoint(mpos[0], mpos[1]):
@@ -184,8 +198,12 @@ while not done:
             win_screen_1 = False
             win_screen_2 = False
             lose_screen = False
+
+    # Options selections
     elif evt.type == pygame.MOUSEBUTTONDOWN and evt.button == 1 and options_screen:
         mpos = pygame.mouse.get_pos()
+
+        # Difficulty selection
         if dif_easy_box.collidepoint(mpos[0], mpos[1]):
             dif = "Easy"
         if dif_medium_box.collidepoint(mpos[0], mpos[1]):
@@ -193,6 +211,7 @@ while not done:
         if dif_hard_box.collidepoint(mpos[0], mpos[1]):
             dif = "Hard"
 
+        # Color inversion selection
         if color_inv_on_box.collidepoint(mpos[0], mpos[1]):
             color_inversion = "On"
             color = BLK
@@ -200,6 +219,7 @@ while not done:
             color_inversion = "Off"
             color = WHT
 
+        # Score selection
         if eleven_score_box.collidepoint(mpos[0], mpos[1]):
             max_score = 11
         if seven_score_box.collidepoint(mpos[0], mpos[1]):
@@ -207,6 +227,7 @@ while not done:
         if fifteen_score_box.collidepoint(mpos[0], mpos[1]):
             max_score = 15
 
+        # Back button
         if back_box.collidepoint(mpos[0], mpos[1]):
             options_screen = False
             start_screen = True
@@ -215,10 +236,13 @@ while not done:
     keys = pygame.key.get_pressed()
     if keys[pygame.K_ESCAPE]:
         done = True
+
+    # Round start key
     elif keys[pygame.K_SPACE] and not (start_screen or options_screen or win_screen or win_screen_1 or win_screen_2 or lose_screen):
         round_start = True
         round_count += 1
 
+    # Player input
     if not start_screen and round_start and single:
         player.input(keys)
     elif not start_screen and round_start and not single:
@@ -227,6 +251,8 @@ while not done:
 
     # DRAWING
     win.fill((0, 0, 0))
+
+    # Main Menu drawing
     if start_screen and color_inversion == "Off":
         win.blit(title_font.render("Pong", True, WHT), (160, -25))
         win.blit(options_font.render("1-Player", True, WHT), (275, 240))
@@ -241,6 +267,7 @@ while not done:
         win.blit(options_font.render("Options", True, BLK), (281, 410))
         win.blit(options_font.render("Exit", True, BLK), (345, 495))
 
+    # Lose Screen drawing
     elif lose_screen and color_inversion == "Off":
         win.blit(end_font.render("You", True, WHT), (50, 0))
         win.blit(end_font.render("Lose!", True, WHT), (350, 150))
@@ -252,6 +279,8 @@ while not done:
         win.blit(end_font.render("Lose!", True, BLK), (350, 150))
         win.blit(options_font.render("Restart", True, BLK), (300, 375))
         win.blit(options_font.render("Main Menu", True, BLK), (230, 465))
+
+    # Single Win Screen Drawing
     elif win_screen and color_inversion == "Off":
         win.blit(end_font.render("You", True, WHT), (50, 0))
         win.blit(end_font.render("Win!", True, WHT), (350, 150))
@@ -263,6 +292,8 @@ while not done:
         win.blit(end_font.render("Win!", True, BLK), (350, 150))
         win.blit(options_font.render("Restart", True, BLK), (300, 375))
         win.blit(options_font.render("Main Menu", True, BLK), (230, 465))
+
+    # Player 1 Win Screen Drawing
     elif win_screen_1 and color_inversion == "Off":
         win.blit(end_font.render("Player 1", True, WHT), (65, -20))
         win.blit(end_font.render("Wins!", True, WHT), (200, 185))
@@ -274,6 +305,8 @@ while not done:
         win.blit(end_font.render("Wins!", True, BLK), (200, 185))
         win.blit(options_font.render("Restart", True, BLK), (300, 375))
         win.blit(options_font.render("Main Menu", True, BLK), (230, 465))
+
+    # Player 2 Win Screen Drawing
     elif win_screen_2 and color_inversion == "Off":
         win.blit(end_font.render("Player 2", True, WHT), (65, -20))
         win.blit(end_font.render("Wins!", True, WHT), (200, 185))
@@ -286,6 +319,7 @@ while not done:
         win.blit(options_font.render("Restart", True, BLK), (300, 375))
         win.blit(options_font.render("Main Menu", True, BLK), (230, 465))
 
+    # Options Screen Drawing
     elif options_screen and color_inversion == "Off":
         win.blit(options_font.render("Options", True, WHT), (275, 15))
         win.blit(game_font.render("Difficulty:", True, WHT), (10, 150))
@@ -377,6 +411,7 @@ while not done:
             win.blit(game_font.render("On", True, GREY), (400, 410))
             win.blit(game_font.render("Off", True, BLK), (550, 410))
 
+    # Single In-Game Drawing
     elif not start_screen and color_inversion == "Off" and single:
         if round_start is False:
             win.blit(game_font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
@@ -390,6 +425,7 @@ while not done:
         enemy.draw(win)
         puck.draw(win)
 
+    # Multi In-Game Drawing
     elif not start_screen and color_inversion == "Off" and not single:
         if round_start is False:
             win.blit(game_font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
@@ -403,6 +439,7 @@ while not done:
         player_two.draw(win)
         puck.draw(win)
 
+    # Single In-Game Drawing
     elif not start_screen and color_inversion == "On" and single:
         win.fill(WHT)
         if round_start is False:
@@ -417,6 +454,7 @@ while not done:
         enemy.draw(win)
         puck.draw(win)
 
+    # Multi In-Game Drawing
     elif not start_screen and color_inversion == "On" and not single:
         win.fill(WHT)
         if round_start is False:
