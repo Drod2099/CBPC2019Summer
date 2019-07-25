@@ -13,17 +13,21 @@ pygame.mixer.init()
 win_width = 800
 win_height = 600
 win = pygame.display.set_mode((win_width, win_height))
+<<<<<<< HEAD
 clock = pygame.time.Clock()
 
 # Platform
 windows = platform.release()
 
 # Fonts
+=======
+>>>>>>> parent of 9df57b8... Added final comments to main
 controls_font = pygame.font.SysFont("Bauhaus 93", 24)
 game_font = pygame.font.SysFont("Bauhaus 93", 48)
 options_font = pygame.font.SysFont("Bauhaus 93", 72)
 end_font = pygame.font.SysFont("Bauhaus 93", 190)
 title_font = pygame.font.SysFont("Bauhaus 93", 230)
+clock = pygame.time.Clock()
 
 done = False
 start_screen = True
