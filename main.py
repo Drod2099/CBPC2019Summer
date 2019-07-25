@@ -2,6 +2,7 @@ from player_paddle import *
 from enemy_paddle import *
 from puck import *
 import random
+import platform
 
 
 # Pygame startup
@@ -14,12 +15,22 @@ win_height = 600
 win = pygame.display.set_mode((win_width, win_height))
 clock = pygame.time.Clock()
 
+# Platform
+windows = platform.release()
+
 # Fonts
-controls_font = pygame.font.SysFont("Bauhaus 93", 24)
+# if windows == "7":
+controls_font = pygame.font.SysFont("C:\\Windows\\Fonts\\Bauhaus 93", 24)
 game_font = pygame.font.SysFont("Bauhaus 93", 48)
 options_font = pygame.font.SysFont("Bauhaus 93", 72)
 end_font = pygame.font.SysFont("Bauhaus 93", 190)
-title_font = pygame.font.SysFont("Bauhaus 93", 230)
+title_font = pygame.font.SysFont("C:\Windows\Fonts\Bauhaus 93", 230)
+# elif windows == "10":
+#     controls_font = pygame.font.Font("BAUHS93.ttf", 24)
+#     game_font = pygame.font.Font("BAUHS93.ttf", 48)
+#     options_font = pygame.font.Font("BAUHS93.ttf", 72)
+#     end_font = pygame.font.Font("BAUHS93.ttf", 190)
+#     title_font = pygame.font.Font("BAUHS93.ttf", 230)
 
 # Booleans
 done = False
