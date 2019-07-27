@@ -267,224 +267,231 @@ while not done:
         player_two.input(keys)
 
     # DRAWING
-    win.fill((0, 0, 0))
+    if color_inversion == "Off":
+        win.fill(BLK)
 
-    # Main Menu drawing
-    if start_screen and color_inversion == "Off":
-        win.blit(title_font.render("Pong", True, WHT), (160, -25))
-        win.blit(options_font.render("1-Player", True, WHT), (275, 240))
-        win.blit(options_font.render("2-Player", True, WHT), (275, 325))
-        win.blit(options_font.render("Options", True, WHT), (281, 410))
-        win.blit(options_font.render("Exit", True, WHT), (345, 495))
-    elif start_screen and color_inversion == "On":
-        win.fill((255, 255, 255))
-        win.blit(title_font.render("Pong", True, BLK), (160, -25))
-        win.blit(options_font.render("1-Player", True, BLK), (275, 240))
-        win.blit(options_font.render("2-Player", True, BLK), (275, 325))
-        win.blit(options_font.render("Options", True, BLK), (281, 410))
-        win.blit(options_font.render("Exit", True, BLK), (345, 495))
+        # Main Menu drawing
+        if start_screen:
+            win.blit(title_font.render("Pong", True, WHT), (160, -25))
+            win.blit(options_font.render("1-Player", True, WHT), (275, 240))
+            win.blit(options_font.render("2-Player", True, WHT), (275, 325))
+            win.blit(options_font.render("Options", True, WHT), (281, 410))
+            win.blit(options_font.render("Exit", True, WHT), (345, 495))
 
-    # Lose Screen drawing
-    elif lose_screen and color_inversion == "Off":
-        win.blit(end_font.render("You", True, WHT), (50, 0))
-        win.blit(end_font.render("Lose!", True, WHT), (350, 150))
-        win.blit(options_font.render("Restart", True, WHT), (300, 375))
-        win.blit(options_font.render("Main Menu", True, WHT), (230, 465))
-    elif lose_screen and color_inversion == "On":
-        win.fill((255, 255, 255))
-        win.blit(end_font.render("You", True, BLK), (50, 0))
-        win.blit(end_font.render("Lose!", True, BLK), (350, 150))
-        win.blit(options_font.render("Restart", True, BLK), (300, 375))
-        win.blit(options_font.render("Main Menu", True, BLK), (230, 465))
+        # Lose Screen drawing
+        elif lose_screen:
+            win.blit(end_font.render("You", True, WHT), (50, 0))
+            win.blit(end_font.render("Lose!", True, WHT), (350, 150))
+            win.blit(options_font.render("Restart", True, WHT), (300, 375))
+            win.blit(options_font.render("Main Menu", True, WHT), (230, 465))
 
-    # Single Win Screen Drawing
-    elif win_screen and color_inversion == "Off":
-        win.blit(end_font.render("You", True, WHT), (50, 0))
-        win.blit(end_font.render("Win!", True, WHT), (350, 150))
-        win.blit(options_font.render("Restart", True, WHT), (300, 375))
-        win.blit(options_font.render("Main Menu", True, WHT), (230, 465))
-    elif win_screen and color_inversion == "On":
-        win.fill((255, 255, 255))
-        win.blit(end_font.render("You", True, BLK), (50, 0))
-        win.blit(end_font.render("Win!", True, BLK), (350, 150))
-        win.blit(options_font.render("Restart", True, BLK), (300, 375))
-        win.blit(options_font.render("Main Menu", True, BLK), (230, 465))
+        # Single Win Screen Drawing
+        elif win_screen:
+            win.blit(end_font.render("You", True, WHT), (50, 0))
+            win.blit(end_font.render("Win!", True, WHT), (350, 150))
+            win.blit(options_font.render("Restart", True, WHT), (300, 375))
+            win.blit(options_font.render("Main Menu", True, WHT), (230, 465))
 
-    # Player 1 Win Screen Drawing
-    elif win_screen_1 and color_inversion == "Off":
-        win.blit(end_font.render("Player 1", True, WHT), (65, -20))
-        win.blit(end_font.render("Wins!", True, WHT), (200, 185))
-        win.blit(options_font.render("Restart", True, WHT), (300, 375))
-        win.blit(options_font.render("Main Menu", True, WHT), (230, 465))
-    elif win_screen_1 and color_inversion == "On":
-        win.fill((255, 255, 255))
-        win.blit(end_font.render("Player 1", True, BLK), (65, -20))
-        win.blit(end_font.render("Wins!", True, BLK), (200, 185))
-        win.blit(options_font.render("Restart", True, BLK), (300, 375))
-        win.blit(options_font.render("Main Menu", True, BLK), (230, 465))
+        # Player 1 Win Screen Drawing
+        elif win_screen_1:
+            win.blit(end_font.render("Player 1", True, WHT), (65, -20))
+            win.blit(end_font.render("Wins!", True, WHT), (200, 185))
+            win.blit(options_font.render("Restart", True, WHT), (300, 375))
+            win.blit(options_font.render("Main Menu", True, WHT), (230, 465))
 
-    # Player 2 Win Screen Drawing
-    elif win_screen_2 and color_inversion == "Off":
-        win.blit(end_font.render("Player 2", True, WHT), (65, -20))
-        win.blit(end_font.render("Wins!", True, WHT), (200, 185))
-        win.blit(options_font.render("Restart", True, WHT), (300, 375))
-        win.blit(options_font.render("Main Menu", True, WHT), (230, 465))
-    elif win_screen_2 and color_inversion == "On":
-        win.fill((255, 255, 255))
-        win.blit(end_font.render("Player 2", True, BLK), (65, -20))
-        win.blit(end_font.render("Wins!", True, BLK), (200, 185))
-        win.blit(options_font.render("Restart", True, BLK), (300, 375))
-        win.blit(options_font.render("Main Menu", True, BLK), (230, 465))
+        # Player 2 Win Screen Drawing
+        elif win_screen_2:
+            win.blit(end_font.render("Player 2", True, WHT), (65, -20))
+            win.blit(end_font.render("Wins!", True, WHT), (200, 185))
+            win.blit(options_font.render("Restart", True, WHT), (300, 375))
+            win.blit(options_font.render("Main Menu", True, WHT), (230, 465))
 
-    # Options Screen Drawing
-    elif options_screen and color_inversion == "Off":
-        win.blit(options_font.render("Options", True, WHT), (275, 15))
-        win.blit(game_font.render("Difficulty:", True, WHT), (10, 150))
-        win.blit(game_font.render("Winning Score:", True, WHT), (10, 280))
-        win.blit(game_font.render("Color Inversion:", True, WHT), (10, 410))
-        win.blit(game_font.render("Back", True, WHT), (350, 520))
+        # Options Screen Drawing
+        elif options_screen:
+            win.blit(options_font.render("Options", True, WHT), (275, 15))
+            win.blit(game_font.render("Difficulty:", True, WHT), (10, 150))
+            win.blit(game_font.render("Winning Score:", True, WHT), (10, 280))
+            win.blit(game_font.render("Color Inversion:", True, WHT), (10, 410))
+            win.blit(game_font.render("Back", True, WHT), (350, 520))
 
-        if dif == "Easy":
-            win.blit(game_font.render("Easy", True, WHT), (300, 150))
-            win.blit(game_font.render("Medium", True, GREY), (450, 150))
-            win.blit(game_font.render("Hard", True, GREY), (675, 150))
+            if dif == "Easy":
+                win.blit(game_font.render("Easy", True, WHT), (300, 150))
+                win.blit(game_font.render("Medium", True, GREY), (450, 150))
+                win.blit(game_font.render("Hard", True, GREY), (675, 150))
 
-        elif dif == "Medium":
-            win.blit(game_font.render("Easy", True, GREY), (300, 150))
-            win.blit(game_font.render("Medium", True, WHT), (450, 150))
-            win.blit(game_font.render("Hard", True, GREY), (675, 150))
+            elif dif == "Medium":
+                win.blit(game_font.render("Easy", True, GREY), (300, 150))
+                win.blit(game_font.render("Medium", True, WHT), (450, 150))
+                win.blit(game_font.render("Hard", True, GREY), (675, 150))
 
-        elif dif == "Hard":
-            win.blit(game_font.render("Easy", True, GREY), (300, 150))
-            win.blit(game_font.render("Medium", True, GREY), (450, 150))
-            win.blit(game_font.render("Hard", True, WHT), (675, 150))
+            elif dif == "Hard":
+                win.blit(game_font.render("Easy", True, GREY), (300, 150))
+                win.blit(game_font.render("Medium", True, GREY), (450, 150))
+                win.blit(game_font.render("Hard", True, WHT), (675, 150))
 
-        if max_score == 7:
-            win.blit(game_font.render("7", True, WHT), (400, 280))
-            win.blit(game_font.render("11", True, GREY), (500, 280))
-            win.blit(game_font.render("15", True, GREY), (625, 280))
+            if max_score == 7:
+                win.blit(game_font.render("7", True, WHT), (400, 280))
+                win.blit(game_font.render("11", True, GREY), (500, 280))
+                win.blit(game_font.render("15", True, GREY), (625, 280))
 
-        elif max_score == 11:
-            win.blit(game_font.render("7", True, GREY), (400, 280))
-            win.blit(game_font.render("11", True, WHT), (500, 280))
-            win.blit(game_font.render("15", True, GREY), (625, 280))
+            elif max_score == 11:
+                win.blit(game_font.render("7", True, GREY), (400, 280))
+                win.blit(game_font.render("11", True, WHT), (500, 280))
+                win.blit(game_font.render("15", True, GREY), (625, 280))
 
-        elif max_score == 15:
-            win.blit(game_font.render("7", True, GREY), (400, 280))
-            win.blit(game_font.render("11", True, GREY), (500, 280))
-            win.blit(game_font.render("15", True, WHT), (625, 280))
+            elif max_score == 15:
+                win.blit(game_font.render("7", True, GREY), (400, 280))
+                win.blit(game_font.render("11", True, GREY), (500, 280))
+                win.blit(game_font.render("15", True, WHT), (625, 280))
 
-        if color_inversion == "On":
-            win.blit(game_font.render("On", True, WHT), (400, 410))
-            win.blit(game_font.render("Off", True, GREY), (550, 410))
+            if color_inversion == "On":
+                win.blit(game_font.render("On", True, WHT), (400, 410))
+                win.blit(game_font.render("Off", True, GREY), (550, 410))
 
-        elif color_inversion == "Off":
-            win.blit(game_font.render("On", True, GREY), (400, 410))
-            win.blit(game_font.render("Off", True, WHT), (550, 410))
+            elif color_inversion == "Off":
+                win.blit(game_font.render("On", True, GREY), (400, 410))
+                win.blit(game_font.render("Off", True, WHT), (550, 410))
 
-    elif options_screen and color_inversion == "On":
-        win.fill((255, 255, 255))
-        win.blit(options_font.render("Options", True, BLK), (275, 15))
-        win.blit(game_font.render("Difficulty:", True, BLK), (10, 150))
-        win.blit(game_font.render("Winning Score:", True, BLK), (10, 280))
-        win.blit(game_font.render("Color Inversion:", True, BLK), (10, 410))
-        win.blit(game_font.render("Back", True, BLK), (350, 520))
+            # Single In-Game Drawing
+            elif not start_screen and single:
+                if round_start is False:
+                    win.blit(game_font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
+                    win.blit(controls_font.render("Up = W or Up-Arrow", True, WHT), (300, 250))
+                    win.blit(controls_font.render("Down = S or Down-Arrow", True, WHT), (275, 310))
+                pygame.draw.rect(win, WHT, (0, 60, win_width, 10))
+                pygame.draw.rect(win, WHT, (395, 0, 10, 60))
+                win.blit(game_font.render(str(player_points), True, WHT), (345, 7))
+                win.blit(game_font.render(str(enemy_points), True, WHT), (425, 7))
+                player.draw(win)
+                enemy.draw(win)
+                puck.draw(win)
 
-        if dif == "Easy":
-            win.blit(game_font.render("Easy", True, BLK), (300, 150))
-            win.blit(game_font.render("Medium", True, GREY), (450, 150))
-            win.blit(game_font.render("Hard", True, GREY), (675, 150))
+            # Multi In-Game Drawing
+            elif not start_screen and not single:
+                if round_start is False:
+                    win.blit(game_font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
+                    win.blit(controls_font.render("1st: Up = W, Down = S", True, WHT), (285, 250))
+                    win.blit(controls_font.render("2nd: Up = Up-Arrow, Down = Down-Arrow", True, WHT), (190, 310))
+                pygame.draw.rect(win, WHT, (0, 60, win_width, 10))
+                pygame.draw.rect(win, WHT, (395, 0, 10, 60))
+                win.blit(game_font.render(str(player_points), True, WHT), (345, 7))
+                win.blit(game_font.render(str(enemy_points), True, WHT), (425, 7))
+                player.draw(win)
+                player_two.draw(win)
+                puck.draw(win)
 
-        elif dif == "Medium":
-            win.blit(game_font.render("Easy", True, GREY), (300, 150))
-            win.blit(game_font.render("Medium", True, BLK), (450, 150))
-            win.blit(game_font.render("Hard", True, GREY), (675, 150))
-
-        elif dif == "Hard":
-            win.blit(game_font.render("Easy", True, GREY), (300, 150))
-            win.blit(game_font.render("Medium", True, GREY), (450, 150))
-            win.blit(game_font.render("Hard", True, BLK), (675, 150))
-
-        if max_score == 7:
-            win.blit(game_font.render("7", True, BLK), (400, 280))
-            win.blit(game_font.render("11", True, GREY), (500, 280))
-            win.blit(game_font.render("15", True, GREY), (625, 280))
-
-        elif max_score == 11:
-            win.blit(game_font.render("7", True, GREY), (400, 280))
-            win.blit(game_font.render("11", True, BLK), (500, 280))
-            win.blit(game_font.render("15", True, GREY), (625, 280))
-
-        elif max_score == 15:
-            win.blit(game_font.render("7", True, GREY), (400, 280))
-            win.blit(game_font.render("11", True, GREY), (500, 280))
-            win.blit(game_font.render("15", True, BLK), (625, 280))
-
-        if color_inversion == "On":
-            win.blit(game_font.render("On", True, BLK), (400, 410))
-            win.blit(game_font.render("Off", True, GREY), (550, 410))
-
-        elif color_inversion == "Off":
-            win.blit(game_font.render("On", True, GREY), (400, 410))
-            win.blit(game_font.render("Off", True, BLK), (550, 410))
-
-    # Single In-Game Drawing
-    elif not start_screen and color_inversion == "Off" and single:
-        if round_start is False:
-            win.blit(game_font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
-            win.blit(controls_font.render("Up = W or Up-Arrow", True, WHT), (300, 250))
-            win.blit(controls_font.render("Down = S or Down-Arrow", True, WHT), (275, 310))
-        pygame.draw.rect(win, WHT, (0, 60, win_width, 10))
-        pygame.draw.rect(win, WHT, (395, 0, 10, 60))
-        win.blit(game_font.render(str(player_points), True, WHT), (345, 7))
-        win.blit(game_font.render(str(enemy_points), True, WHT), (425, 7))
-        player.draw(win)
-        enemy.draw(win)
-        puck.draw(win)
-
-    # Multi In-Game Drawing
-    elif not start_screen and color_inversion == "Off" and not single:
-        if round_start is False:
-            win.blit(game_font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
-            win.blit(controls_font.render("1st: Up = W, Down = S", True, WHT), (285, 250))
-            win.blit(controls_font.render("2nd: Up = Up-Arrow, Down = Down-Arrow", True, WHT), (190, 310))
-        pygame.draw.rect(win, WHT, (0, 60, win_width, 10))
-        pygame.draw.rect(win, WHT, (395, 0, 10, 60))
-        win.blit(game_font.render(str(player_points), True, WHT), (345, 7))
-        win.blit(game_font.render(str(enemy_points), True, WHT), (425, 7))
-        player.draw(win)
-        player_two.draw(win)
-        puck.draw(win)
-
-    # Single In-Game Drawing
-    elif not start_screen and color_inversion == "On" and single:
+    else:
         win.fill(WHT)
-        if round_start is False:
-            win.blit(game_font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
-            win.blit(controls_font.render("Up = W or Up-Arrow", True, BLK), (300, 250))
-            win.blit(controls_font.render("Down = S or Down-Arrow", True, BLK), (275, 310))
-        pygame.draw.rect(win, BLK, (0, 60, win_width, 10))
-        pygame.draw.rect(win, BLK, (395, 0, 10, 60))
-        win.blit(game_font.render(str(player_points), True, BLK), (345, 7))
-        win.blit(game_font.render(str(enemy_points), True, BLK), (425, 7))
-        player.draw(win)
-        enemy.draw(win)
-        puck.draw(win)
 
-    # Multi In-Game Drawing
-    elif not start_screen and color_inversion == "On" and not single:
-        win.fill(WHT)
-        if round_start is False:
-            win.blit(game_font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
-            win.blit(controls_font.render("1st: Up = W, Down = S", True, BLK), (285, 250))
-            win.blit(controls_font.render("2nd: Up = Up-Arrow, Down = Down-Arrow", True, BLK), (190, 310))
-        pygame.draw.rect(win, BLK, (0, 60, win_width, 10))
-        pygame.draw.rect(win, BLK, (395, 0, 10, 60))
-        win.blit(game_font.render(str(player_points), True, BLK), (345, 7))
-        win.blit(game_font.render(str(enemy_points), True, BLK), (425, 7))
-        player.draw(win)
-        player_two.draw(win)
-        puck.draw(win)
+        # Main Menu drawing
+        if start_screen:
+            win.blit(title_font.render("Pong", True, BLK), (160, -25))
+            win.blit(options_font.render("1-Player", True, BLK), (275, 240))
+            win.blit(options_font.render("2-Player", True, BLK), (275, 325))
+            win.blit(options_font.render("Options", True, BLK), (281, 410))
+            win.blit(options_font.render("Exit", True, BLK), (345, 495))
+
+        # Lose Screen drawing
+        elif lose_screen:
+            win.blit(end_font.render("You", True, BLK), (50, 0))
+            win.blit(end_font.render("Lose!", True, BLK), (350, 150))
+            win.blit(options_font.render("Restart", True, BLK), (300, 375))
+            win.blit(options_font.render("Main Menu", True, BLK), (230, 465))
+
+        # Single Win Screen Drawing
+        elif win_screen:
+            win.blit(end_font.render("You", True, BLK), (50, 0))
+            win.blit(end_font.render("Win!", True, BLK), (350, 150))
+            win.blit(options_font.render("Restart", True, BLK), (300, 375))
+            win.blit(options_font.render("Main Menu", True, BLK), (230, 465))
+
+        # Player 1 Win Screen Drawing
+        elif win_screen_1:
+            win.blit(end_font.render("Player 1", True, BLK), (65, -20))
+            win.blit(end_font.render("Wins!", True, BLK), (200, 185))
+            win.blit(options_font.render("Restart", True, BLK), (300, 375))
+            win.blit(options_font.render("Main Menu", True, BLK), (230, 465))
+
+        # Player 2 Win Screen Drawing
+        elif win_screen_2:
+            win.blit(end_font.render("Player 2", True, BLK), (65, -20))
+            win.blit(end_font.render("Wins!", True, BLK), (200, 185))
+            win.blit(options_font.render("Restart", True, BLK), (300, 375))
+            win.blit(options_font.render("Main Menu", True, BLK), (230, 465))
+
+        # Options screen drawing
+        elif options_screen:
+            win.blit(options_font.render("Options", True, BLK), (275, 15))
+            win.blit(game_font.render("Difficulty:", True, BLK), (10, 150))
+            win.blit(game_font.render("Winning Score:", True, BLK), (10, 280))
+            win.blit(game_font.render("Color Inversion:", True, BLK), (10, 410))
+            win.blit(game_font.render("Back", True, BLK), (350, 520))
+
+            if dif == "Easy":
+                win.blit(game_font.render("Easy", True, BLK), (300, 150))
+                win.blit(game_font.render("Medium", True, GREY), (450, 150))
+                win.blit(game_font.render("Hard", True, GREY), (675, 150))
+
+            elif dif == "Medium":
+                win.blit(game_font.render("Easy", True, GREY), (300, 150))
+                win.blit(game_font.render("Medium", True, BLK), (450, 150))
+                win.blit(game_font.render("Hard", True, GREY), (675, 150))
+
+            elif dif == "Hard":
+                win.blit(game_font.render("Easy", True, GREY), (300, 150))
+                win.blit(game_font.render("Medium", True, GREY), (450, 150))
+                win.blit(game_font.render("Hard", True, BLK), (675, 150))
+
+            if max_score == 7:
+                win.blit(game_font.render("7", True, BLK), (400, 280))
+                win.blit(game_font.render("11", True, GREY), (500, 280))
+                win.blit(game_font.render("15", True, GREY), (625, 280))
+
+            elif max_score == 11:
+                win.blit(game_font.render("7", True, GREY), (400, 280))
+                win.blit(game_font.render("11", True, BLK), (500, 280))
+                win.blit(game_font.render("15", True, GREY), (625, 280))
+
+            elif max_score == 15:
+                win.blit(game_font.render("7", True, GREY), (400, 280))
+                win.blit(game_font.render("11", True, GREY), (500, 280))
+                win.blit(game_font.render("15", True, BLK), (625, 280))
+
+            if color_inversion == "On":
+                win.blit(game_font.render("On", True, BLK), (400, 410))
+                win.blit(game_font.render("Off", True, GREY), (550, 410))
+
+            elif color_inversion == "Off":
+                win.blit(game_font.render("On", True, GREY), (400, 410))
+                win.blit(game_font.render("Off", True, BLK), (550, 410))
+
+        # Single In-Game Drawing
+        elif not start_screen and single:
+            if round_start is False:
+                win.blit(game_font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
+                win.blit(controls_font.render("Up = W or Up-Arrow", True, BLK), (300, 250))
+                win.blit(controls_font.render("Down = S or Down-Arrow", True, BLK), (275, 310))
+            pygame.draw.rect(win, BLK, (0, 60, win_width, 10))
+            pygame.draw.rect(win, BLK, (395, 0, 10, 60))
+            win.blit(game_font.render(str(player_points), True, BLK), (345, 7))
+            win.blit(game_font.render(str(enemy_points), True, BLK), (425, 7))
+            player.draw(win)
+            enemy.draw(win)
+            puck.draw(win)
+
+        # Multi In-Game Drawing
+        elif not start_screen and not single:
+            if round_start is False:
+                win.blit(game_font.render("Space to Start Round", True, (255, 0, 0)), (190, 100))
+                win.blit(controls_font.render("1st: Up = W, Down = S", True, BLK), (285, 250))
+                win.blit(controls_font.render("2nd: Up = Up-Arrow, Down = Down-Arrow", True, BLK), (190, 310))
+            pygame.draw.rect(win, BLK, (0, 60, win_width, 10))
+            pygame.draw.rect(win, BLK, (395, 0, 10, 60))
+            win.blit(game_font.render(str(player_points), True, BLK), (345, 7))
+            win.blit(game_font.render(str(enemy_points), True, BLK), (425, 7))
+            player.draw(win)
+            player_two.draw(win)
+            puck.draw(win)
 
     pygame.display.flip()
 
