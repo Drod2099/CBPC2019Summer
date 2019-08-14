@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="aae71a0a-00d4-4d1e-8bc8-129f41ae04ac" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,15 +14,15 @@
     <session id="1836063504">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="26" />
+          <entry key="project.closed" value="28" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.11" value="1" />
-          <entry key="project.open.time.4" value="10" />
+          <entry key="project.open.time.4" value="11" />
           <entry key="project.open.time.5" value="7" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="4" />
           <entry key="project.open.time.8" value="2" />
-          <entry key="project.opened" value="27" />
+          <entry key="project.opened" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -42,12 +41,12 @@
         <counts>
           <entry key="dummy" value="4" />
           <entry key="py" value="12125" />
-          <entry key="txt" value="1742" />
+          <entry key="txt" value="1785" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="1746" />
+          <entry key="PLAIN_TEXT" value="1789" />
           <entry key="Python" value="12125" />
         </counts>
       </usages-collector>
@@ -58,7 +57,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
+            <state relative-caret-position="500">
               <caret line="375" column="12" selection-start-line="375" selection-start-column="12" selection-end-line="375" selection-end-column="12" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
@@ -514,19 +513,25 @@
       <option name="project" value="LOCAL" />
       <updated>1564243326086</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Simplified drawing with color inversion.">
+      <created>1564502386583</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1564502386583</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11485775" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.329718" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.329718" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -544,7 +549,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added sound to paddle collision" />
     <MESSAGE value="Added top and bottom collision for puck and paddles, with sound" />
     <MESSAGE value="Adjusted speed. Start on win, lose, and start screens" />
     <MESSAGE value="Added Start screen into folder" />
@@ -569,7 +573,8 @@
     <MESSAGE value="Fixed shit" />
     <MESSAGE value="Fixed different file paths for different versions of Windows" />
     <MESSAGE value="Adjusted how color inversion is detected in the drawing section" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adjusted how color inversion is detected in the drawing section" />
+    <MESSAGE value="Simplified drawing with color inversion." />
+    <option name="LAST_COMMIT_MESSAGE" value="Simplified drawing with color inversion." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../MatrixStuff/Matrix.py">
@@ -617,7 +622,7 @@
     <entry file="file://$PROJECT_DIR$/main-win10.py" />
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
+        <state relative-caret-position="500">
           <caret line="375" column="12" selection-start-line="375" selection-start-column="12" selection-end-line="375" selection-end-column="12" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />

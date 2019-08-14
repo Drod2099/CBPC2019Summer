@@ -7,9 +7,7 @@ import os
 
 
 # Pygame startup
-pygame.display.init()
-pygame.font.init()
-pygame.mixer.init()
+pygame.init()
 
 win_width = 800
 win_height = 600
@@ -36,11 +34,18 @@ if windows == "10":
         end_font = pygame.font.Font("C:\\Users\\" + username + "\\AppData\\Local\\Microsoft\\Windows\\Fonts\\BAUHS93.ttf", 190)
         title_font = pygame.font.Font("C:\\Users\\" + username + "\\AppData\\Local\\Microsoft\\Windows\\Fonts\\BAUHS93.ttf", 230)
 elif windows == "7":
-    controls_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 24)
-    game_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 48)
-    options_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 72)
-    end_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 190)
-    title_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 230)
+    if os.path.isfile('C:\\Windows\\Fonts\\BAUHS93_0.ttf'):
+        controls_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 24)
+        game_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 48)
+        options_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 72)
+        end_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 190)
+        title_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 230)
+    else:
+        controls_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93.ttf", 24)
+        game_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93.ttf", 48)
+        options_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93.ttf", 72)
+        end_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93.ttf", 190)
+        title_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93.ttf", 230)
 
 # Booleans
 done = False
