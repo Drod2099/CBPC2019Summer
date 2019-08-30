@@ -19,7 +19,7 @@ windows = platform.release()
 username = os.getenv('username')
 
 # Fonts
-if windows == "10":
+if windows == "10" or "8":
     if os.path.isfile('C:\\Users\\' + username + '\\AppData\\Local\\Microsoft\\Windows\\Fonts\\BAUHS93_0.ttf'):
         controls_font = pygame.font.Font("C:\\Users\\" + username + "\\AppData\\Local\\Microsoft\\Windows\\Fonts\\BAUHS93_0.ttf", 24)
         game_font = pygame.font.Font("C:\\Users\\" + username + "\\AppData\\Local\\Microsoft\\Windows\\Fonts\\BAUHS93_0.ttf", 48)
@@ -33,6 +33,21 @@ if windows == "10":
         options_font = pygame.font.Font("C:\\Users\\" + username + "\\AppData\\Local\\Microsoft\\Windows\\Fonts\\BAUHS93.ttf", 72)
         end_font = pygame.font.Font("C:\\Users\\" + username + "\\AppData\\Local\\Microsoft\\Windows\\Fonts\\BAUHS93.ttf", 190)
         title_font = pygame.font.Font("C:\\Users\\" + username + "\\AppData\\Local\\Microsoft\\Windows\\Fonts\\BAUHS93.ttf", 230)
+
+    elif os.path.isfile('C:\\Windows\\Fonts\\BAUHS93_0.ttf'):
+        controls_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 24)
+        game_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 48)
+        options_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 72)
+        end_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 190)
+        title_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 230)
+
+    elif os.path.isfile('C:\\Windows\\Fonts\\BAUHS93.ttf'):
+        controls_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93.ttf", 24)
+        game_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93.ttf", 48)
+        options_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93.ttf", 72)
+        end_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93.ttf", 190)
+        title_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93.ttf", 230)
+        
 elif windows == "7":
     if os.path.isfile('C:\\Windows\\Fonts\\BAUHS93_0.ttf'):
         controls_font = pygame.font.Font("C:\\Windows\\Fonts\\BAUHS93_0.ttf", 24)
